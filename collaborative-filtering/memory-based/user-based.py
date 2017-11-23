@@ -22,7 +22,7 @@ def get_correlation_coefficents(scores, target_user_index):
     target = scores[target_user_index]
 
     for i, score in enumerate(scores):
-        # 共通の評価が少ない場合は除外
+        # 共通の評価が少ない（3未満）、自分自身場合は除外
         indices = np.where(((target + 1) * (score + 1)) != 0)[0]
         if len(indices) < 3 or i == target_user_index:
             continue
